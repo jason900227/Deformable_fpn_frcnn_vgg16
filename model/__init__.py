@@ -1,0 +1,1 @@
+from model.fpn_frcnn_vgg16 import FPNFasterRCNNVGG16
