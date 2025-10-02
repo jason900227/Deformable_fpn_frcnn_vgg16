@@ -202,12 +202,12 @@ def copy_images_by_txt(image_dir, txt_file_path, output_dir):
             print(f"Warning: Image {image_name}.jpg not found in {image_dir}")
 
 
-train_img_png_dir = './raw_data/train_img(png)'
-train_img_jpg_dir = './raw_data/train_img(jpg)'
+train_img_png_dir = './raw_data/train_data'
+train_img_jpg_dir = './raw_data/train_data(jpg)'
 train_json_path = './raw_data/train_label.json'
 
-test_img_png_dir = './raw_data/test_img(png)'
-test_img_jpg_dir = './raw_data/test_img(jpg)'
+test_img_png_dir = './raw_data/test_data'
+test_img_jpg_dir = './raw_data/test_data(jpg)'
 test_json_path = './raw_data/test_label.json'
 
 train_xml_without_normal_dir = './data/train/VOCdevkit/VOC2007/Annotations'

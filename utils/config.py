@@ -26,7 +26,7 @@ class Config:
     epoch_decay = 32       # epoch to decay lr
 
     # testing params
-    n_visual_imgs = 10      # number of images to visualize
+    n_visual_imgs = 20      # number of images to visualize
     visualize = True
 
     # save

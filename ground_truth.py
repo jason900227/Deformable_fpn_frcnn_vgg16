@@ -72,6 +72,6 @@ def ground_truth(image_dir, annotation_dir, output_dir):
 
 image_dir = "./data/test/VOCdevkit/VOC2007/JPEGImages"
 annotation_dir = "./data/test/VOCdevkit/VOC2007/Annotations"
-output_dir = "./raw_data/ground_truth(test_img)"
+output_dir = "./raw_data/ground_truth(test_data)"
 
 ground_truth(image_dir, annotation_dir, output_dir)

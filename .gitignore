@@ -4,9 +4,9 @@ exp/
 checkpoints/
 data/test/
 data/train/
-raw_data/test_img(jpg)/
-raw_data/test_img(png)/
-raw_data/train_img(jpg)/
-raw_data/train_img(png)/
+raw_data/test_data(jpg)/
+raw_data/test_data/
+raw_data/train_data(jpg)/
+raw_data/train_data/
 raw_data/test_label.json
 raw_data/train_label.json
