@@ -41,7 +41,7 @@ for details and original implementations, please refer to the repositories liste
   ## 3. Dataset
   TO DO
 
-  ## 4. Result
+  ## 4. Demo
   TO DO
 
   ## 5. References

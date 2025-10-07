@@ -85,7 +85,8 @@ def train(**kwargs):
     meters = {k: AverageValueMeter() for k in Losses._fields}
     best_mAP = 0
     best_path = None
-    lr = opt.lr
+    lr_start = opt.lr
+    lr_end = opt.lr * opt.lr_decay
 
     print('Start training...')
     for epoch in range(1, opt.epoch + 1):
@@ -132,12 +133,10 @@ def train(**kwargs):
             best_mAP = map_result['mAP']
             best_path = save_model(net, opt.model_name, epoch)
         
-        # learning rate decay
-        if epoch == opt.epoch_decay:
-            for param in optimizer.param_groups:
-                param['lr'] *= opt.lr_decay
-            lr = lr * opt.lr_decay
- 
+        lr = lr_start - (lr_start - lr_end) * (epoch / opt.epoch)
+        for param_group in optimizer.param_groups:
+            param_group['lr'] = lr
+            
     # load best model
     net.load_state_dict(torch.load(best_path))
 

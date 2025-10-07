@@ -23,7 +23,6 @@ class Config:
     rpn_sigma = 3.          # rpn sigma for l1_smooth_loss
     roi_sigma = 1.          # roi sigma for l1_smooth_loss
     epoch = 40             # total training epoch
-    epoch_decay = 32       # epoch to decay lr
 
     # testing params
     n_visual_imgs = 20      # number of images to visualize
