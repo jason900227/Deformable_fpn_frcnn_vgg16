@@ -45,4 +45,11 @@ for details and original implementations, please refer to the repositories liste
   TO DO
 
   ## 5. References
-  TO DO
+  ## 5. References
+
+- [Deepwise-AILab/ChestX-Det10-Dataset](https://github.com/Deepwise-AILab/ChestX-Det10-Dataset)
+
+- Jingyu Liu, Jie Lian, and Yizhou Yu.  
+  **"ChestX-Det10: Chest X-ray Dataset on Detection of Thoracic Abnormalities."**  
+  *arXiv preprint* arXiv:2006.10550v3, 2020.  
+  [https://arxiv.org/abs/2006.10550v3](https://arxiv.org/abs/2006.10550v3)
