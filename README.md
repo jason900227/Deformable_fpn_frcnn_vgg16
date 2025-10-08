@@ -49,18 +49,20 @@ for details and original implementations, please refer to the repositories liste
   * [`train_data.zip`](http://resource.deepwise.com/xraychallenge/train_data.zip)
 
   After downloading, extract the `.zip` files and organize the directory structure as follows:
+  ```
   ./raw_data/
-  │
-  ├── test.json
-  ├── train.json
-  ├── test_data/ # extracted from test_data.zip
-  │ ├── 36199.png
-  │ ├── 36212.png
-  │ └── ...
-  └── train_data/ # extracted from train_data.zip
-    ├── 36200.png
-    ├── 36201.png
-    └── ...
+    │
+    ├── test.json
+    ├── train.json
+    ├── test_data/ # extracted from test_data.zip
+    │ ├── 36199.png
+    │ ├── 36212.png
+    │ └── ...
+    └── train_data/ # extracted from train_data.zip
+      ├── 36200.png
+      ├── 36201.png
+      └── ...
+  ```
 
   Ensure that all four files are placed under the `./raw_data/` directory as shown above.
 
