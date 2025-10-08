@@ -204,11 +204,11 @@ def copy_images_by_txt(image_dir, txt_file_path, output_dir):
 
 train_img_png_dir = './raw_data/train_data'
 train_img_jpg_dir = './raw_data/train_data(jpg)'
-train_json_path = './raw_data/train_label.json'
+train_json_path = './raw_data/train.json'
 
 test_img_png_dir = './raw_data/test_data'
 test_img_jpg_dir = './raw_data/test_data(jpg)'
-test_json_path = './raw_data/test_label.json'
+test_json_path = './raw_data/test.json'
 
 train_xml_without_normal_dir = './data/train/VOCdevkit/VOC2007/Annotations'
 test_xml_without_normal_dir = './data/test/VOCdevkit/VOC2007/Annotations'

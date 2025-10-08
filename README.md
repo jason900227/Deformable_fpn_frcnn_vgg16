@@ -39,6 +39,32 @@ for details and original implementations, please refer to the repositories liste
   ```
 
   ## 3. Dataset
+  ### 3.1 Download
+  Please download the **ChestX-Det10** dataset from [Deepwise-AILab/ChestX-Det10-Dataset](https://github.com/Deepwise-AILab/ChestX-Det10-Dataset).
+
+  You will need the following four files:
+  * [`test.json`](https://github.com/Deepwise-AILab/ChestX-Det10-Dataset)  
+  * [`train.json`](https://github.com/Deepwise-AILab/ChestX-Det10-Dataset)    
+  * [`test_data.zip`](http://resource.deepwise.com/xraychallenge/test_data.zip)
+  * [`train_data.zip`](http://resource.deepwise.com/xraychallenge/train_data.zip)
+
+  After downloading, extract the `.zip` files and organize the directory structure as follows:
+  ./raw_data/
+  │
+  ├── test.json
+  ├── train.json
+  ├── test_data/ # extracted from test_data.zip
+  │ ├── 36199.png
+  │ ├── 36212.png
+  │ └── ...
+  └── train_data/ # extracted from train_data.zip
+    ├── 36200.png
+    ├── 36201.png
+    └── ...
+
+  Ensure that all four files are placed under the `./raw_data/` directory as shown above.
+
+  ### 3.2 
   TO DO
 
   ## 4. Demo
@@ -49,3 +75,5 @@ for details and original implementations, please refer to the repositories liste
   * [Deepwise-AILab/ChestX-Det10-Dataset](https://github.com/Deepwise-AILab/ChestX-Det10-Dataset)
 
   * Jingyu Liu, Jie Lian, and Yizhou Yu, "ChestX-Det10: Chest X-ray Dataset on Detection of Thoracic Abnormalities.", arXiv preprint arXiv:2006.10550v3, 2020, [https://arxiv.org/abs/2006.10550v3](https://arxiv.org/abs/2006.10550v3)
+
+  * TO DO

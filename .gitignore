@@ -8,5 +8,5 @@ raw_data/test_data(jpg)/
 raw_data/test_data/
 raw_data/train_data(jpg)/
 raw_data/train_data/
-raw_data/test_label.json
-raw_data/train_label.json
+raw_data/test.json
+raw_data/train.json
