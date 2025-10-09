@@ -108,16 +108,21 @@ for details and original implementations, please refer to the repositories liste
                     └── ...
   ```
 
-  ## 4. Train
+  ## 4. Usage Examples
+  You can easily modify the training parameters in `utils/config.py` and execute the following scripts to train and test the model.
+  ### 4.1 Train
+  ```
+  python .\train.py
+  ```
+  ### 4.2 Test
+  ```
+  python .\test.py
+  ```
+
+  ## 5. Demo
   TO DO
 
-  ## 5. Test
-  TO DO
-
-  ## 6. Demo
-  TO DO
-
-  ## 7. References
+  ## 6. References
 
   * [Deepwise-AILab/ChestX-Det10-Dataset](https://github.com/Deepwise-AILab/ChestX-Det10-Dataset)
 
