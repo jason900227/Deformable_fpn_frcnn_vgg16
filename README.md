@@ -55,26 +55,82 @@ for details and original implementations, please refer to the repositories liste
     ├── test.json
     ├── train.json
     ├── test_data/ # extracted from test_data.zip
-    │ ├── 36199.png
-    │ ├── 36212.png
-    │ └── ...
+    │   ├── 36199.png
+    │   ├── 36212.png
+    │   └── ...
     └── train_data/ # extracted from train_data.zip
-      ├── 36200.png
-      ├── 36201.png
-      └── ...
+        ├── 36200.png
+        ├── 36201.png
+        └── ...
   ```
 
   Ensure that all four files are placed under the `./raw_data/` directory as shown above.
-  ### 3.2 
+  ### 3.2 Preprocessing
+  After downloading and organizing the dataset as described in **Section 3.1**, please run the preprocessing script to convert the data into the VOC format.
+
+  Run the following command in the project root directory:
+  ```
+  python .\raw_data\preprocessing.py
+  ```
+
+  After execution, the following directory structure will be generated:
+  ```
+  ./data/
+    │
+    ├── test/
+    │   └── VOCdevkit/
+    │       └── VOC2007/
+    │           ├── Annotations/
+    │           │   ├── 36212.xml
+    │           │   ├── 36266.xml
+    │           │   └── ...
+    │           ├── ImageSets/
+    │           │   └── Main/
+    │           │       └── test.txt
+    │           └── JPEGImages/
+    │               ├── 36212.jpg
+    │               ├── 36266.jpg
+    |               └── ...
+    │
+    └── train/
+        └── VOCdevkit/
+            └── VOC2007/
+                ├── Annotations/
+                │   ├── 36204.xml
+                │   ├── 36205.xml
+                |   └── ...
+                ├── ImageSets/
+                │   └── Main/
+                │       └── train.txt
+                └── JPEGImages/
+                    ├── 36204.jpg
+                    ├── 36205.jpg
+                    └── ...
+  ```
+
+  ## 4. Train
   TO DO
 
-  ## 4. Demo
+  ## 5. Test
   TO DO
 
-  ## 5. References
+  ## 6. Demo
+  TO DO
+
+  ## 7. References
 
   * [Deepwise-AILab/ChestX-Det10-Dataset](https://github.com/Deepwise-AILab/ChestX-Det10-Dataset)
 
   * Jingyu Liu, Jie Lian, and Yizhou Yu, "ChestX-Det10: Chest X-ray Dataset on Detection of Thoracic Abnormalities.", arXiv preprint arXiv:2006.10550v3, 2020, [https://arxiv.org/abs/2006.10550v3](https://arxiv.org/abs/2006.10550v3)
 
-  * TO DO
+  * [Ziruiwang409/improved-faster-rcnn](https://github.com/Ziruiwang409/improved-faster-rcnn/tree/main)
+
+  * [chenyuntc/simple-faster-rcnn-pytorch](https://github.com/chenyuntc/simple-faster-rcnn-pytorch)
+
+  * [jwyang/fpn.pytorch](https://github.com/jwyang/fpn.pytorch)
+
+  * [txytju/Faster-RCNN-FPN](https://github.com/txytju/Faster-RCNN-FPN)
+
+  * [msracver/Deformable-ConvNets](https://github.com/msracver/Deformable-ConvNets)
+
+  * [developer0hye/PyTorch-Deformable-Convolution-v2](https://github.com/developer0hye/PyTorch-Deformable-Convolution-v2)
