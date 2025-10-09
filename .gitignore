@@ -1,6 +1,6 @@
 __pycache__/
 *.pyc
-exp/
+save/
 checkpoints/
 data/test/
 data/train/

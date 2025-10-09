@@ -85,6 +85,7 @@ def train(**kwargs):
     meters = {k: AverageValueMeter() for k in Losses._fields}
     best_mAP = 0
     best_path = None
+    lr = opt.lr
     lr_start = opt.lr
     lr_end = opt.lr * opt.lr_decay
 
@@ -141,7 +142,7 @@ def train(**kwargs):
     net.load_state_dict(torch.load(best_path))
 
     # save final model
-    PATH = f'{opt.save_dir}/{opt.model_name}.pth'
+    PATH = f'{opt.save_model_dir}/{opt.model_name}.pth'
     target_dir = os.path.dirname(PATH)
     if not os.path.exists(target_dir):
         os.makedirs(target_dir)

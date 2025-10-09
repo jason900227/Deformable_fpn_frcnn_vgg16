@@ -64,7 +64,7 @@ for details and original implementations, please refer to the repositories liste
         └── ...
   ```
 
-  Ensure that all four files are placed under the `./raw_data/` directory as shown above.
+  Ensure that all four files are placed under the `./raw_data` directory as shown above.
   ### 3.2 Preprocessing
   After downloading and organizing the dataset as described in **Section 3.1**, please run the preprocessing script to convert the data into the VOC format.
 
@@ -109,15 +109,18 @@ for details and original implementations, please refer to the repositories liste
   ```
 
   ## 4. Usage Examples
-  You can easily modify the training parameters in `utils/config.py` and execute the following scripts to train and test the model.
+  You can easily modify the training parameters in `./utils/config.py` and execute the following scripts to train and test the model.
   ### 4.1 Train
+  Run the following command to perform training:
   ```
   python .\train.py
   ```
   ### 4.2 Test
+  Run the following command to perform testing:
   ```
   python .\test.py
   ```
+  > Note: You can visualize the testing results by setting `visualize=True` in the configuration file, and the output images will be saved under the `./save_dir/visuals` directory specified in the configuration.
 
   ## 5. Demo
   TO DO

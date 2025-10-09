@@ -4,8 +4,8 @@ class Config:
     # dataset params
     voc_train_data_dir = './data/train/VOCdevkit/VOC2007/'
     voc_test_data_dir = './data/test/VOCdevkit/VOC2007/'
-    min_size = 600      # image resize
-    max_size = 1000     # image resize
+    min_size = 600         # image resize
+    max_size = 1000        # image resize
     train_num_workers = 4
     test_num_workers = 4
 
@@ -22,14 +22,15 @@ class Config:
     score_thresh = 0.05     # score threshold in nms
     rpn_sigma = 3.          # rpn sigma for l1_smooth_loss
     roi_sigma = 1.          # roi sigma for l1_smooth_loss
-    epoch = 40             # total training epoch
+    epoch = 40              # total training epoch
 
     # testing params
     n_visual_imgs = 20      # number of images to visualize
     visualize = True
 
     # save
-    save_dir = './exp'
+    save_model_dir = './save/exp'
+    save_visuals_dir = './save/visuals'
 
     def f_parse_args(self, kwargs):
         # parse user input argument

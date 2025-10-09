@@ -40,14 +40,14 @@ def test(**kwargs):
     net = FPNFasterRCNNVGG16(n_fg_class=10).to(device) 
 
     # load the trained weight
-    PATH = f'{opt.save_dir}/deformable_fpn_frcnn_vgg16.pth'
+    PATH = f'{opt.save_model_dir}/deformable_fpn_frcnn_vgg16.pth'
     net.load_state_dict(torch.load(PATH))
 
     # evaluation
     print('Start evaluation')
     net.eval()
 
-    visual_dir = f'{opt.save_dir}/visuals/{opt.model_name}'
+    visual_dir = opt.save_visuals_dir
     if not os.path.exists(visual_dir):
         os.makedirs(visual_dir)
 
