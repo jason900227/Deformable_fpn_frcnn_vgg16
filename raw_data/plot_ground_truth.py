@@ -1,8 +1,10 @@
 import os
+import sys
 import cv2
 import xml.etree.ElementTree as ET
 
 # config
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from utils.config import opt
 
 # dataset
