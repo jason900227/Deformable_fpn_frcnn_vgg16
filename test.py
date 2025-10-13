@@ -87,7 +87,7 @@ def test(**kwargs):
                 color = VOC_COLOR_LIST[VOC_BBOX_LABEL_NAMES.index(class_name)]
 
                 # draw bbox rectangle
-                cv2.rectangle(ori_img, (xmin, ymin), (xmax, ymax), color, 1)
+                cv2.rectangle(ori_img, (xmin, ymin), (xmax, ymax), color, 2)
 
                 # label
                 label = class_name + ': ' + str(round(score, 2))
