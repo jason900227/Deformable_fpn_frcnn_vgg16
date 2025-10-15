@@ -1,4 +1,5 @@
 import os
+import csv
 import torch
 from tqdm import tqdm
 
@@ -31,7 +32,7 @@ def get_meter_data(meters):
     return {k: v.value()[0] for k, v in meters.items()}
 
 def save_model(model, model_name, epoch):
-    PATH = f'./checkpoints/{model_name}/checkpoint{epoch}.pth'
+    PATH = f'{opt.save_checkpoints_dir}/{model_name}_checkpoint{epoch}.pth'
     dir = os.path.dirname(PATH)
     if not os.path.exists(dir):
         os.makedirs(dir)
@@ -89,6 +90,15 @@ def train(**kwargs):
     lr_start = opt.lr
     lr_end = opt.lr * opt.lr_decay
 
+    # create loss file
+    loss_dir = opt.save_loss_dir
+    if not os.path.exists(loss_dir):
+        os.makedirs(loss_dir)
+    save_loss_path = os.path.join(loss_dir, f"{opt.model_name}_loss.csv")
+    with open(save_loss_path, "w", newline='') as f:
+        writer = csv.writer(f)
+        writer.writerow(["epoch", "rpn_cls_loss", "rpn_loc_loss", "roi_cls_loss", "roi_loc_loss"])
+
     print('Start training...')
     for epoch in range(1, opt.epoch + 1):
         # switch to train mode
@@ -124,6 +134,10 @@ def train(**kwargs):
                                                                                                                                                roi_loc_loss, 
                                                                                                                                                roi_cls_loss,
                                                                                                                                                total_loss))
+        # save loss
+        with open(save_loss_path, "a", newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([epoch, rpn_cls_loss, rpn_loc_loss, roi_cls_loss, roi_loc_loss])
 
         # evaluate
         net.eval()

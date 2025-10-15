@@ -30,6 +30,8 @@ class Config:
 
     # save
     save_model_dir = './save/exp'
+    save_checkpoints_dir = './save/checkpoints'
+    save_loss_dir = './save/loss'
     save_visuals_dir = './save/visuals'
 
     def f_parse_args(self, kwargs):

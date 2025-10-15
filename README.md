@@ -123,6 +123,17 @@ for details and original implementations, please refer to the repositories liste
   > Note: You can visualize the testing results by setting `visualize=True` in the configuration file, and the output images will be saved under the `./save_dir/visuals` directory specified in the configuration.
 
   ## 5. Demo
+  Run the following command to launch the demo UI:
+  ```
+  python .\demo.py
+  ```
+  ### 5.1 Load Model
+  Click Load Model and select the trained weights file `./save/exp/deformable_fpn_frcnn_vgg16.pth`
+  ### 5.2 Load Data
+  Click Load Data and select the test data folder `./data/test`
+  ### 5.3 Previous and Next
+  Use Previous and Next buttons to navigate through test images and view their Ground Truth and predictions.
+  ### 5.4 Display
   TO DO
 
   ## 6. References
