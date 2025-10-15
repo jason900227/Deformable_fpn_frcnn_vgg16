@@ -1,5 +1,7 @@
 import os
+import cv2
 import torch
+import numpy as np
 
 # config
 from utils.config import opt
@@ -16,8 +18,6 @@ from model import FPNFasterRCNNVGG16
 # utils
 from utils import array_tool as at
 from utils.eval_tool import voc_ap
-import numpy as np
-import cv2
 
 def test(**kwargs):
     # set up cuda
@@ -65,8 +65,6 @@ def test(**kwargs):
             # prediction
             pred_bboxes, pred_labels, pred_scores = net(trans_img, None, None, scale,original_size)
 
-            # visualize
-            # original image
             ori_img = ori_img.squeeze(0).permute(1,2,0).cpu().numpy()
             ori_img = ori_img.astype(np.uint8)
             ori_img = cv2.cvtColor(ori_img, cv2.COLOR_RGB2BGR)

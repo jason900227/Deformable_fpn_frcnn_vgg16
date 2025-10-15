@@ -5,7 +5,6 @@ from torchvision.models import VGG16_Weights
 
 # deformable convolution
 from model.dcn.deform_conv_v2 import DeformableConv2d
-from model.utils.misc import normal_init
 
 '''
     Load pretrained VGG16 model and replace 

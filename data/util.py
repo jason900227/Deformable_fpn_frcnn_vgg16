@@ -1,6 +1,6 @@
+import random
 import numpy as np
 from PIL import Image
-import random
 
 def read_image(path, dtype=np.float32, color=True):
     """Read an image from a file.

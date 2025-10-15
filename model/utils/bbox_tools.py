@@ -1,8 +1,5 @@
 import numpy as np
 import numpy as xp
-import six
-from six import __init__
-
 
 def loc2bbox(src_bbox, loc):
     """Decode bounding boxes from bounding box offsets and scales.

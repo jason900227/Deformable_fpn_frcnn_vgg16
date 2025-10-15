@@ -5,9 +5,8 @@ import numpy as np
 from skimage import transform as sktsf
 import torchvision.transforms.functional as F
 
-from data.voc_dataset import VOCBboxDataset
 from data.util import *
-from utils.config import opt
+from data.voc_dataset import VOCBboxDataset
 
 def normalize(img):
     img = F.normalize(

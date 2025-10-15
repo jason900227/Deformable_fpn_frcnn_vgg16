@@ -1,8 +1,8 @@
 import os
-import xml.etree.ElementTree as ET
 import numpy as np
+import xml.etree.ElementTree as ET
 
-from .util import read_image
+from data.util import read_image
 
 class VOCBboxDataset:
     def __init__(self, data_dir, split, use_difficult=False):

@@ -1,8 +1,11 @@
-import sys
 import os
 import cv2
-import numpy as np
+import sys
 import torch
+import numpy as np
+import xml.etree.ElementTree as ET
+
+# PyQt5
 from PyQt5.QtWidgets import (
     QApplication, QWidget, QPushButton, QLabel,
     QFileDialog, QHBoxLayout, QVBoxLayout
@@ -12,15 +15,14 @@ from PyQt5.QtCore import Qt
 
 # config
 from utils.config import opt
+
 # dataset
 from data.dataset import Dataset
 from data.voc_dataset import VOC_BBOX_LABEL_NAMES
 from data.util import VOC_COLOR_LIST
+
 # model
 from model import FPNFasterRCNNVGG16
-# utils
-from utils import array_tool as at
-import xml.etree.ElementTree as ET
 
 class Demo(QWidget):
     def __init__(self):
@@ -28,14 +30,14 @@ class Demo(QWidget):
         self.setWindowTitle("Demo")
         self.resize(1600, 800)
 
-        # 初始變數
+        # Initial variables
         self.dataset = None
         self.index = 0
         self.net = None
         self.device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
         self.voc_folder = None
 
-        # GUI 元素
+        # GUI components
         self.gt_label = QLabel("Ground Truth")
         self.gt_label.setAlignment(Qt.AlignHCenter)
         self.gt_label.setStyleSheet("font-size: 24px; font-weight: bold;")
@@ -55,7 +57,7 @@ class Demo(QWidget):
         self.prev_btn = QPushButton("Previous")
         self.next_btn = QPushButton("Next")
 
-        # 調整按鈕大小
+        # Resize button
         for btn in [self.load_model_btn, self.load_data_btn, self.prev_btn, self.next_btn]:
             btn.setFixedHeight(50)
             btn.setFixedWidth(150)
@@ -127,10 +129,7 @@ class Demo(QWidget):
         if self.dataset is None or self.net is None:
             return
 
-        # Dataset 輸出
         ori_img, trans_img, scale, ori_size = self.dataset[self.index]
-
-        # Tensor batch
         trans_img = torch.from_numpy(trans_img).unsqueeze(0).float().to(self.device)
         scale = float(scale)
         original_size = list(ori_size)
@@ -149,8 +148,11 @@ class Demo(QWidget):
         gt_img = cv2.cvtColor(gt_img, cv2.COLOR_RGB2BGR)
 
         if os.path.exists(xml_file):
+            # Parsing XML markup files
             tree = ET.parse(xml_file)
             root = tree.getroot()
+
+            # Read the bounding box and draw it on the image
             for obj in root.findall("object"):
                 class_name = obj.find("name").text
                 bndbox = obj.find("bndbox")
@@ -158,37 +160,54 @@ class Demo(QWidget):
                 ymin = int(bndbox.find("ymin").text)
                 xmax = int(bndbox.find("xmax").text)
                 ymax = int(bndbox.find("ymax").text)
+
+                # select color
                 color = VOC_COLOR_LIST[VOC_BBOX_LABEL_NAMES.index(class_name)]
+
+                # draw bbox rectangle
                 cv2.rectangle(gt_img, (xmin, ymin), (xmax, ymax), color, 2)
+
+                # Label (fixed score=1.0 here)
                 label = f"{class_name}: 1.0"
                 text_size, baseline = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, 0.4, 1)
                 pl = (xmin, max(0, ymin - text_size[1]))
                 cv2.rectangle(gt_img, (pl[0]-1, pl[1]-baseline), (pl[0]+text_size[0], pl[1]+text_size[1]), color, -1)
                 cv2.putText(gt_img, label, (pl[0], pl[1]+baseline), cv2.FONT_HERSHEY_SIMPLEX, 0.4, (255,255,255), 1)
 
-        # Test 推論
+        # Test
         with torch.no_grad():
+            # Prediction
             pred_bboxes, pred_labels, pred_scores = self.net(trans_img, None, None, scale, original_size)
 
         test_img = ori_img.copy()
         test_img = np.transpose(test_img, (1,2,0)).astype(np.uint8)
         test_img = cv2.cvtColor(test_img, cv2.COLOR_RGB2BGR)
 
+        # Draw bboxes
         for bbox, label, score in zip(pred_bboxes, pred_labels, pred_scores):
             if score < 0.5:
                 continue
             class_name = VOC_BBOX_LABEL_NAMES[label]
+
+            # Bounding box
             bbox = bbox.astype(np.int32)
+
+            # Get bbox coordinate
             ymin, xmin, ymax, xmax = bbox
+
+            # Select color
             color = VOC_COLOR_LIST[VOC_BBOX_LABEL_NAMES.index(class_name)]
+
+            # Draw bbox rectangle
             cv2.rectangle(test_img, (xmin, ymin), (xmax, ymax), color, 2)
-            text = f"{class_name}: {round(score,2):.2f}"  # 顯示到 0.xx
+
+            # Label
+            text = f"{class_name}: {round(score,2):.2f}"
             text_size, baseline = cv2.getTextSize(text, cv2.FONT_HERSHEY_SIMPLEX, 0.4, 1)
             pl = (xmin, ymin - text_size[1])
             cv2.rectangle(test_img, (pl[0]-1, pl[1]-baseline), (pl[0]+text_size[0], pl[1]+text_size[1]), color, -1)
             cv2.putText(test_img, text, (pl[0], pl[1]+baseline), cv2.FONT_HERSHEY_SIMPLEX, 0.4, (255,255,255), 1)
 
-        # 顯示
         self.set_pixmap(self.gt_img, gt_img)
         self.set_pixmap(self.test_img, test_img)
 

@@ -1,9 +1,9 @@
 from __future__ import division
 from collections import defaultdict
-import itertools
-import numpy as np
 import six
 import torch
+import itertools
+import numpy as np
 from tqdm import tqdm
 
 from model.utils.bbox_tools import bbox_iou

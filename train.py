@@ -11,8 +11,8 @@ from data.dataset import Dataset
 
 # model 
 from model import FPNFasterRCNNVGG16
-from torchnet.meter import AverageValueMeter
 from model.frcnn_bottleneck import Losses
+from torchnet.meter import AverageValueMeter
 
 # utils
 from utils import array_tool as at
