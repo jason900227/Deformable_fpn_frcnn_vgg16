@@ -115,12 +115,13 @@ for details and original implementations, please refer to the repositories liste
   ```
   python .\train.py
   ```
+  After completing the training process, the trained model weight are saved in the ./save/exp folder.
   ### 4.2 Test
   Run the following command to perform testing:
   ```
   python .\test.py
   ```
-  > Note: You can visualize the testing results by setting `visualize=True` in the configuration file, and the output images will be saved under the `./save_dir/visuals` directory specified in the configuration.
+  You can visualize the testing results by setting `visualize=True` in the configuration file, and the output images will be saved under the `./save_dir/visuals` directory specified in the configuration.
 
   ## 5. Demo
   Run the following command to launch the demo UI:
@@ -128,13 +129,14 @@ for details and original implementations, please refer to the repositories liste
   python .\demo.py
   ```
   ### 5.1 Load Model
-  Click Load Model and select the trained weights file `./save/exp/deformable_fpn_frcnn_vgg16.pth`
+  Click Load Model and select the trained model weight file `./save/exp/deformable_fpn_frcnn_vgg16.pth`
   ### 5.2 Load Data
   Click Load Data and select the test data folder `./data/test`
   ### 5.3 Previous and Next
   Use Previous and Next buttons to navigate through test images and view their Ground Truth and predictions.
   ### 5.4 Display
-  TO DO
+  ![Demo UI](./save/demo/demo_1.png)
+  ![Demo UI](./save/demo/demo_2.png)
 
   ## 6. References
 
